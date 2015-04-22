@@ -4,6 +4,7 @@ import javax.ws.rs.ext.Provider
 import java.lang.reflect.{Type}
 import java.lang.annotation.Annotation
 import java.io.{IOException, InputStream, OutputStream}
+import com.fasterxml.jackson.databind.JsonMappingException
 import org.slf4j.LoggerFactory
 import javax.ws.rs.{WebApplicationException, Consumes, Produces}
 import javax.ws.rs.core.{Response, MultivaluedMap, MediaType}
@@ -30,7 +31,7 @@ class JacksonProvider[A] extends AbstractMessageReaderWriterProvider[A] with Jac
     try {
       deserialize(entityStream)(Manifest.classType(klass))
     } catch {
-      case e: JsonParseException => {
+      case e: JsonMappingException => {
         throw new WebApplicationException(Response.status(Status.BAD_REQUEST)
           .entity(e.getMessage)
           .build)
