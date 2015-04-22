@@ -18,8 +18,6 @@ class SJerseyIntegrationSpec extends SJerseyTestBase {
 
     "extracts the query parameters" in {
 
-//      Thread.sleep(100000000L)
-
       List("set", "list", "vector", "seq", "indexedset").foreach {
         settype =>
           val client = ClientBuilder.newClient
