@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>eu.fakod</groupId>
-    <artifactId>sjersey_2.10</artifactId>
+    <artifactId>sjersey_2.11</artifactId>
     <version>0.4.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <url>https://github.com/FaKod/sjersey</url>
@@ -17,10 +17,11 @@
     <name>Jersey Support for Scala ${scala.version}</name>
 
     <properties>
-        <scala.version>2.10.3</scala.version>
-        <scala.version.short>2.10</scala.version.short>
-        <jackson-module-scala.version>2.3.1</jackson-module-scala.version>
-        <jersey-server.version>2.5.1</jersey-server.version>
+        <scala.version>2.11.6</scala.version>
+        <scala.version.short>2.11</scala.version.short>
+        <jackson-module-scala.version>2.5.2</jackson-module-scala.version>
+        <jersey-server.version>2.17</jersey-server.version>
+        <specs2.version>2.4.17</specs2.version>
     </properties>
 
     <licenses>
@@ -76,34 +77,40 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.6.2</version>
+            <version>1.7.12</version>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-nop</artifactId>
-            <version>1.6.2</version>
+            <version>1.7.12</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
-            <version>1.9.0</version>
+            <version>1.10.19</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.specs2</groupId>
-            <artifactId>specs2_${scala.version.short}</artifactId>
-            <version>1.14</version>
+            <artifactId>specs2-core_${scala.version.short}</artifactId>
+            <version>${specs2.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2-junit_${scala.version.short}</artifactId>
+            <version>${specs2.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.7</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
 
@@ -173,7 +180,7 @@
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.0</version>
                 <configuration>
                     <recompileMode>incremental</recompileMode>
                     <args>

@@ -21,11 +21,12 @@ class SJerseyIntegrationSpec extends SJerseyTestBase {
       List("set", "list", "vector", "seq", "indexedset").foreach {
         settype =>
           val client = ClientBuilder.newClient
-          val target = client.target("http://localhost:8080").path("sjersey_2.10/testresource/" + settype).
+          val target = client.target("http://localhost:8080").path("sjersey_2.11/testresource/" + settype).
             queryParam("name", "1").queryParam("name", "2")
           val resp = target.request().get[String](classOf[String])
           resp must be_==("1, 2")
       }
+      ok
     }
   }
 
@@ -37,7 +38,7 @@ class SJerseyIntegrationSpec extends SJerseyTestBase {
       clientConfig.register(classOf[JacksonProvider[_]])
 
       val client = ClientBuilder.newClient(clientConfig)
-      val target = client.target("http://localhost:8080").path("sjersey_2.10/testresource/")
+      val target = client.target("http://localhost:8080").path("sjersey_2.11/testresource/")
 
       val cc = SjerseyTest("1", 1, 2, true)
       val resp = target.request().post[SjerseyTest](Entity.entity(cc, MediaType.APPLICATION_JSON), classOf[SjerseyTest])
